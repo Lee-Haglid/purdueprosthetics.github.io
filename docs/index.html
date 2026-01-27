@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Purdue Prosthetics Club</title>
+
+  <style>
+    :root {
+      --gold: #ffc857;      /* golden yellow */
+      --gold-deep: #f4a900; /* deeper accent yellow */
+      --black: #111111;
+      --white: #ffffff;
+      --offwhite: #f8f8f8;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--offwhite);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ---------- GLOBAL LAYOUT ---------- */
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* ---------- NAVBAR ---------- */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17, 17, 17, 0.96);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      display: flex;
+      justify-content: center;
+      padding: 10px 16px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      font-size: 1rem;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, #ffe9a3 0, #ffc857 40%, #f6f6f6 90%);
+      padding: 70px 0 80px;
+    }
+
+    .hero::before {
+      /* diagonal black accent bar */
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -40px;
+      width: 180px;
+      height: 200%;
+      background: var(--black);
+      transform: rotate(-12deg);
+      opacity: 0.18;
+    }
+
+    .hero::after {
+      /* dotted pattern */
+      content: "";
+      position: absolute;
+      left: -40px;
+      bottom: -40px;
+      width: 200px;
+      height: 200px;
+      background-image: radial-gradient(var(--black) 1px, transparent 1px);
+      background-size: 10px 10px;
+      opacity: 0.15;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--white);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero-tag-line {
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .hero-highlight {
+      background: var(--black);
+      color: var(--gold);
+      padding: 2px 6px;
+      border-radius: 6px;
+      box-decoration-break: clone;
+    }
+
+    .hero-subtitle {
+      max-width: 520px;
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hero-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* fills the box, nice crop */
+    border-radius: inherit;
+    display: block;
+    }
+
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease, color 0.15s ease, border 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--black);
+      color: var(--gold);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--black);
+      border-color: var(--black);
+    }
+
+    .btn-ghost:hover {
+      background: var(--black);
+      color: var(--gold);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 18px;
+      margin-top: 22px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-metric {
+      border-left: 2px solid var(--black);
+      padding-left: 10px;
+    }
+
+    .hero-metric span {
+      display: block;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    /* hero right "image" placeholder area */
+    .hero-visual {
+      position: relative;
+      height: 450px;
+    }
+
+    .hero-poly {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-photo-placeholder {
+      position: absolute;
+      right: 6%;
+      top: 10%;
+      width: 80%;
+      height: 75%;
+      background: var(--offwhite);
+      border-radius: 18px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      border: 2px solid var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .hero-mini-card {
+      position: absolute;
+      left: -10px;
+      bottom: 10%;
+      background: var(--black);
+      color: var(--gold);
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 0.8rem;
+      max-width: 180px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-mini-dots {
+      margin-top: 6px;
+      width: 50px;
+      height: 6px;
+      background-image: radial-gradient(var(--gold) 1px, transparent 1px);
+      background-size: 8px 8px;
+    }
+
+    /* ---------- SECTION BASE ---------- */
+
+    section {
+      padding: 60px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background: var(--black);
+      max-width: 80px;
+      opacity: 0.4;
+    }
+
+    /* ---------- ABOUT / INFO ---------- */
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-pill {
+      background: var(--black);
+      color: var(--gold);
+      padding: 6px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .about-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .about-highlight-box {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 16px 18px;
+      border: 1px solid #ddd;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-highlight-box::before {
+      content: "";
+      position: absolute;
+      right: -30px;
+      top: -30px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      opacity: 0.5;
+    }
+
+    .about-highlight-box strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .about-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+      font-size: 0.88rem;
+    }
+
+    .about-fact {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .about-fact-marker {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      border: 2px solid var(--black);
+      background: var(--gold);
+      margin-top: 4px;
+    }
+
+    .about-right {
+      position: relative;
+      padding-left: 16px;
+      border-left: 2px dotted rgba(0, 0, 0, 0.35);
+      font-size: 0.9rem;
+    }
+
+    .about-right-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    /* ---------- REQUEST SECTION ---------- */
+
+    .section-alt {
+      background: linear-gradient(
+        135deg,
+        #ffffff 0,
+        #fff5d4 35%,
+        #ffe19c 80%,
+        #ffffff 100%
+      );
+      clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+    }
+
+    .request-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .request-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .request-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .request-step {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px 12px;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .step-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 2px solid var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      background: var(--gold);
+      font-weight: 700;
+    }
+
+    .request-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+      max-width: 360px;
+      margin-left: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .request-card-title {
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+      color: #555;
+    }
+
+    .request-card-main {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .request-card-note {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    /* ---------- PAST PROJECTS (SCROLL REVEAL) ---------- */
+
+    .projects {
+      background: var(--offwhite);
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      margin-top: 20px;
+      position: relative;
+    }
+
+    /* connecting accent line */
+    .projects-grid::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 14px;
+      width: 2px;
+      height: 90%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.45) 6px,
+        transparent 6px,
+        transparent 12px
+      );
+      opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+      .projects-grid::before {
+        display: none;
+      }
+    }
+
+    .project-card {
+      position: relative;
+      padding: 18px 18px 16px;
+      background: var(--white);
+      border-radius: 18px;
+      border: 1px solid #ddd;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transform-origin: center;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      clip-path: polygon(0 8%, 92% 0, 100% 80%, 8% 100%);
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      opacity: 0.35;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px) rotate(-0.4deg);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 6px;
+    }
+
+    .project-line {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .project-outcome {
+      font-size: 0.84rem;
+    }
+
+    /* SCROLL REVEAL BASE */
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- PHOTO GALLERY ---------- */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-auto-rows: 130px; /* base height for rows */
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 140px;
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* Different shapes & sizes like the old gallery */
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(3) {
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(5) {
+      grid-column: span 2;
+    }
+
+    /* Preserve the whole image (no crazy cropping) */
+    .gallery-item img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+
+    /* ---------- LIGHTBOX ---------- */
+
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;              /* hidden by default */
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-overlay.open {
+      display: flex;
+    }
+
+    /* optional: close hint */
+    .lightbox-overlay::after {
+      content: "Click anywhere to close";
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8rem;
+      color: #ddd;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- DONATE ---------- */
+
+    .donate {
+      background: var(--black);
+      color: var(--white);
+      clip-path: polygon(0 0, 100% 6%, 100% 100%, 0% 94%);
+    }
+
+    .donate-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .donate-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .donate-pill {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 6px;
+      color: #bbbbbb;
+    }
+
+    .donate-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .donate-highlight {
+      color: var(--gold);
+    }
+
+    .donate-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.88rem;
+    }
+
+    .donate-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .donate-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 6px;
+    }
+
+    .donate-box {
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 16px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.85rem;
+    }
+
+    /* ---------- CONTACT ---------- */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2.4fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-block {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 16px 18px;
+      border: 1px solid #ddd;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08);
+      font-size: 0.9rem;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .contact-value {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .contact-line {
+      width: 60px;
+      height: 2px;
+      background: var(--black);
+      margin: 8px 0 10px;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      padding: 18px 16px 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+          <img src="images/Logo.png" alt="Prosthetics Club logo" class="nav-logo-img">
+        Purdue Prosthetics Club
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#request">Request</a>
+        <a href="#projects">Projects</a>
+        <a href="#gallery">Photos</a>
+        <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrapper hero-inner">
+      <div>
+        <div class="hero-tag">
+          <div class="hero-tag-line"></div>
+          Free Custom Prosthetics • Humans and Animals
+        <div class="hero-tag-line"></div>
+        </div>
+        <h1 class="hero-title">
+          We lend a </br>helping
+          <span class="hero-highlight">hand</span>
+        </h1>
+        <p class="hero-subtitle">
+          We are a student-led prosthetics club at Purdue University designing
+          and fabricating custom devices for people and pets.
+          Our mission: accessible, functional, and beautiful prosthetics
+          and assitive devices for every client on our list.
+        </p>
+
+        <div class="hero-cta">
+          <a
+            class="btn btn-primary"
+            href="#request"
+          >
+            Request a Prosthetic
+          </a>
+          <a class="btn btn-ghost" href="#donate">Support Our Work</a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-metric">
+            <span>50+</span>
+            Clients on our waitlist
+          </div>
+          <div class="hero-metric">
+            <span>30+</span>
+            Student designers & makers
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-poly"></div>
+        <div class="hero-photo-placeholder">
+          <img src="images/Photo2.png" alt="Prosthetics project photo" class="hero-photo-img">
+        </div>
+        <div class="hero-mini-card">
+          Free, custom-fit prosthetics<br />for humans & animals.
+          <div class="hero-mini-dots"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / MORE INFO -->
+  <section id="about">
+    <div class="wrapper">
+      <div class="section-header">
+        <div class="section-kicker">More Information</div>
+        <h2 class="section-title">Who we are</h2>
+      </div>
+
+      <div class="about-layout">
+        <div>
+          <div class="about-pill">
+            <span class="about-pill-dot"></span>
+            Student-led • Client-focused • Engineering
+          </div>
+          <p>
+            Our club brings together students across engineering, design, and
+            health disciplines to create tailored prosthetic solutions. We work
+            closely with clients to understand their lifestyle, goals, and
+            unique anatomy to tailor every prosthetic to their needs.
+          </p>
+
+          <div class="about-highlight-box">
+            <strong>What we do:</strong>
+            We handle the full process from design to delivery — including
+            guiding you through measurements, 3D modeling, material selection,
+            printing, and fitting. Each prosthetic is iterated in collaboration
+            with the client for comfort, function, and aesthetics.
+            <div class="about-facts">
+              <div class="about-fact">
+                <div class="about-fact-marker"></div>
+                <div>3D-printed and custom-fabricated devices</div>
+              </div>
+              <div class="about-fact">
+                <div class="about-fact-marker"></div>
+                <div>Clients from California to New York</div>
+              </div>
+              <div class="about-fact">
+                <div class="about-fact-marker"></div>
+                <div>Hands-on learning for all project members</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-right">
+          <div class="about-right-label">Why it matters</div>
+          <p>
+            Custom prosthetics are often expensive and inaccessible. By
+            combining student ingenuity with low-cost fabrication, we can serve
+            clients who might otherwise go without.
+          </p>
+          <p>
+            We especially focus on, but are not limited to:
+          </p>
+          <ul>
+            <li>Clients seeking myoelectric prosthetics hands</li>
+            <li>Pets whose mobility impacts their quality of life</li>
+            <li>Individuals seeking lightweight, activity-specific devices</li>
+          </ul>
+          <p>
+            Interested in joining the team, becoming a client, or partnering with us? Reach out
+            using the contact section below.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUEST A PROSTHETIC -->
+  <section id="request" class="section-alt">
+    <div class="wrapper">
+      <div class="section-header">
+        <div class="section-kicker">Request</div>
+        <h2 class="section-title">Submit a prosthetic request</h2>
+      </div>
+
+      <div class="request-layout">
+        <div>
+          <p>
+            If you or your pet could benefit from a custom prosthetic,
+            please submit a request. Our team will follow up via email to gather
+            measurements, photos, and any medical or veterinary guidance.
+            Please note that, due to our current client capacity, it may take 
+            anywhere from a few weeks to a few months to receive a reply.
+          </p>
+
+          <ul class="request-steps">
+            <li class="request-step">
+              <div class="step-number">1</div>
+              <div>
+                Fill out our request form with basic contact information and a
+                short description of the need.
+              </div>
+            </li>
+            <li class="request-step">
+              <div class="step-number">2</div>
+              <div>
+                We’ll reach out as soon as we can to ask follow-up questions
+                and request photos or measurements.
+              </div>
+            </li>
+            <li class="request-step">
+              <div class="step-number">3</div>
+              <div>
+                Our design team will create a custom solution, share a
+                prototype, and refine it based on your feedback.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="request-card">
+            <div class="request-card-title">Form Intake</div>
+            <div class="request-card-main">Start a new prosthetic request</div>
+            <div class="request-card-note">
+              You’ll be redirected to a Google Form where you can tell us
+              about your needs.
+            </div>
+
+            <!-- Google Form link -->
+            <a
+              class="btn btn-primary"
+              href="https://forms.gle/eZdeg4AdtwwNc8xt5"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Request Form
+            </a>
+
+            <!-- If you prefer an embedded form, you can replace the button above
+                 with an <iframe> using your Google Form's "Embed" URL. -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST PROJECTS (SCROLL REVEAL) -->
+  <section id="projects" class="projects">
+    <div class="wrapper">
+      <div class="section-header">
+        <div class="section-kicker">Past Projects</div>
+        <h2 class="section-title">Recent builds & stories</h2>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Each project-card has reveal-on-scroll class -->
+        <article class="project-card reveal-on-scroll">
+          <div class="project-tag">Canine Assistive Devices</div>
+          <div class="project-title">Accessible Food Bowl</div>
+          <div class="project-meta">Accessible Feeding • Specialty Design</div>
+          <div class="project-line"></div>
+          <p class="project-outcome">
+          Designed a custom food bowl for a dog missing its lower jaw. 
+          The bowl featured a contoured rim that prevented food from 
+          spilling and allowed the dog to eat independently 
+          without caregiver assistance.
+          </p>
+        </article>
+
+        <article class="project-card reveal-on-scroll">
+          <div class="project-tag">Feline Mobility</div>
+          <div class="project-title">Rear-Leg Cat Wheelchair</div>
+          <div class="project-meta">Modular grips • Classroom use</div>
+          <div class="project-line"></div>
+          <p class="project-outcome">
+          Designed and built a lightweight rear-leg wheelchair for a paralyzed cat, 
+          providing mobility assistance while reducing drag and improving posture.
+          </p>
+        </article>
+
+        <article class="project-card reveal-on-scroll">
+          <div class="project-tag">Finger Prosthetics</div>
+          <div class="project-title">3D-Printed Partial Fingers</div>
+          <div class="project-meta">Articulated • Everyday tasks</div>
+          <div class="project-line"></div>
+          <p class="project-outcome">
+            Passive mechanical fingers designed for a client who was born without 
+            fingers after the first knuckle to improve grip stability on
+            cups, grocery bags, and tools.
+          </p>
+        </article>
+
+        <article class="project-card reveal-on-scroll">
+          <div class="project-tag">Experimental Design</div>
+          <div class="project-title">Myoelectric Hand</div>
+          <div class="project-meta">Prototype • Feedback-driven</div>
+          <div class="project-line"></div>
+          <p class="project-outcome">
+          Collaborated with a client to create a customized prosthetic hand 
+          fitted to his arm and controlled using forearm muscle activity. 
+          The hand could open and close in response to EMG signals.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY / PLACEHOLDERS -->
+  <section id="gallery">
+    <div class="wrapper">
+      <div class="section-header">
+        <div class="section-kicker">Photos</div>
+        <h2 class="section-title">Workshop & project gallery</h2>
+      </div>
+
+      <p style="max-width: 600px; font-size: 0.9rem;">
+        Images of some of our past work! For more check out our Instagram @purdueprosthetics
+      </p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="images/Photo1.png" alt=""></div>
+        <div class="gallery-item"><img src="images/Photo3.png" alt=""></div>
+        <div class="gallery-item"><img src="images/Photo4.png" alt=""></div>
+        <div class="gallery-item"><img src="images/Photo2.png" alt=""></div>
+        <div class="gallery-item"><img src="images/Photo5.png" alt=""></div>
+        <div class="gallery-item"><img src="images/Photo6.png" alt=""></div>
+        <div class="gallery-item"><img src="images/Photo7.png" alt=""></div>
+        <div class="gallery-item"><img src="images/Photo8.png" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate" class="donate">
+    <div class="wrapper donate-inner">
+      <div>
+        <div class="donate-pill">Donate</div>
+        <div class="donate-title">
+          Help us <span class="donate-highlight">reach more clients</span>.
+        </div>
+        <p>
+          Every dollar goes directly to materials, fabrication, and shipping.
+          Your support lets us say “yes” to more prosthetic requests and take on
+          complex, multi-iteration builds.
+        </p>
+        <ul class="donate-list">
+          <li>
+            <div class="donate-dot"></div>
+            <div>Filament, resins, padding, and hardware for custom builds</div>
+          </li>
+          <li>
+            <div class="donate-dot"></div>
+            <div>Tools, molds, and replacement parts for long-term use</div>
+          </li>
+          <li>
+            <div class="donate-dot"></div>
+            <div>Shipping prosthetics to clients who can’t visit in person</div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="donate-box">
+          <strong>Support options:</strong>
+          <p>
+            We accept donations via our university’s giving portal
+          </p>
+
+          <!-- TODO: Replace this link with your actual donation page --> 
+          <a
+            href="https://giving.purdue.edu/west-lafayette/?q=3D%20Printed%20Prosthetics%20Club"
+            class="btn btn-primary"
+            style="margin-top: 8px;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open Donation Page
+          </a>
+          <p style="margin-top: 12px; font-size: 0.85rem; color: #cccccc;">
+            For further instructions and information on Purdue donations,
+            please see the
+            <a
+              href="https://www.purdue.edu/sao/fundraising/donations.php"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: var(--gold); text-decoration: underline;"
+            >
+              official Purdue fundraising page
+            </a>
+          </p>
+
+          <p style="margin-top: 12px; font-size: 0.8rem; color: #cccccc;">
+            If you’re interested in sponsoring a specific project (e.g., funding
+            a full prosthetic for one client), please contact us to coordinate.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrapper">
+      <div class="section-header">
+        <div class="section-kicker">Contact</div>
+        <h2 class="section-title">Get in touch</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-block">
+          <div class="contact-label">General inquiries</div>
+          <div class="contact-value">Club Email</div>
+          <div class="contact-line"></div>
+          <p>
+            purdue3dprosthetic@gmail.com<br />
+            Pawsitiveprosthetics@gmail.com<br />
+            or Haglid@purdue.edu
+          </p>
+          <p style="font-size: 0.84rem;">
+            For questions about joining, partnerships, media, or volunteering,
+            send us an email and we’ll respond as soon as we can.
+          </p>
+        </div>
+
+        <div class="contact-block">
+          <div class="contact-label">Social & location</div>
+          <div class="contact-value">Connect with us</div>
+          <div class="contact-line"></div>
+          <p style="margin-bottom: 6px;">
+            Instagram: @purdueprosthetics<br />
+          </p>
+          <p style="margin-bottom: 6px;">
+            Campus: Purdue University, West Lafayette<br />
+          </p>
+          <p style="font-size: 0.84rem;">
+            We frequently post photos of in-progress builds, team work nights,
+            and team hangouts
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    2026 Purdue Prosthetics Club
+  </footer>
+
+  <!-- SCROLL REVEAL JS -->
+  <script>
+    // Simple IntersectionObserver for project cards
+    const revealItems = document.querySelectorAll(".reveal-on-scroll");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target); // only animate once
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    revealItems.forEach((el) => observer.observe(el));
+  
+  
+  </script>
+<div class="lightbox-overlay" id="lightbox">
+<img src="" alt="Expanded gallery image" id="lightbox-img">
+</div>
+
+</body>
+</html>
