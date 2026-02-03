@@ -1,0 +1,19 @@
+Student: Lee Haglid
+Title: Accessible Food Bowl
+Meta: Accessible Feeding • Specialty Design
+Story: Designed a custom food bowl for a dog missing its lower jaw. The bowl featured a contoured rim that prevented food from spilling and allowed the dog to eat independently without caregiver assistance.
+
+Student: Alex and Vasile
+Title: Rear-Leg Cat Wheelchair
+Meta: Hind legs • Movement
+Story: Designed and built a lightweight rear-leg wheelchair for a paralyzed cat, providing mobility assistance while reducing drag and improving posture.
+
+Student: Lee Haglid and Ben Miller
+Title: Motion Artifact Testing Rig
+Meta: Sensor validation • Experimental setup
+Story: Designed and built a repeatable motion-artifact testing rig to evaluate wearable sensor performance under controlled movement conditions.
+
+Student: Whole Club 2025
+Title: Myoelectric Hand Prosthesis
+Meta: Upper-limb prosthetic • EMG control
+Story: Designed and tested an EMG-controlled hand prosthesis, focusing on signal conditioning, grip-force tuning, and reliable object manipulation.
