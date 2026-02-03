@@ -14,40 +14,22 @@
       --offwhite: #f8f8f8;
     }
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--offwhite);
       color: var(--black);
       line-height: 1.6;
     }
 
-    /* ---------- GLOBAL LAYOUT ---------- */
+    .wrapper { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
 
-    .wrapper {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    h1,
-    h2,
-    h3 {
-      margin-top: 0;
-    }
-
-    a {
-      color: inherit;
-    }
+    h1, h2, h3 { margin-top: 0; }
+    a { color: inherit; }
 
     /* ---------- NAVBAR ---------- */
-
     .nav {
       position: sticky;
       top: 0;
@@ -79,25 +61,13 @@
       gap: 8px;
     }
 
-    .nav-logo-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      font-size: 0.95rem;
-    }
+    .nav-links { display: flex; gap: 18px; font-size: 0.95rem; }
 
     .nav-links a {
       text-decoration: none;
       position: relative;
       padding-bottom: 2px;
     }
-
     .nav-links a::after {
       content: "";
       position: absolute;
@@ -108,20 +78,21 @@
       background: var(--gold);
       transition: width 0.2s ease;
     }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+    .nav-links a:hover::after { width: 100%; }
 
     @media (max-width: 720px) {
-      .nav-inner {
-        flex-direction: column;
-        gap: 10px;
-      }
+      .nav-inner { flex-direction: column; gap: 10px; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    .nav-logo-img {
+      height: 26px;
+      width: 26px;
+      object-fit: contain;
+      display: block;
     }
 
     /* ---------- HERO ---------- */
-
     .hero {
       position: relative;
       overflow: hidden;
@@ -130,7 +101,6 @@
     }
 
     .hero::before {
-      /* diagonal black accent bar */
       content: "";
       position: absolute;
       right: -80px;
@@ -143,7 +113,6 @@
     }
 
     .hero::after {
-      /* dotted pattern */
       content: "";
       position: absolute;
       left: -40px;
@@ -161,12 +130,7 @@
       gap: 40px;
       align-items: center;
     }
-
-    @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } }
 
     .hero-tag {
       display: inline-flex;
@@ -182,11 +146,7 @@
       margin-bottom: 12px;
     }
 
-    .hero-tag-line {
-      width: 30px;
-      height: 1px;
-      background: var(--gold);
-    }
+    .hero-tag-line { width: 30px; height: 1px; background: var(--gold); }
 
     .hero-title {
       font-size: clamp(2.1rem, 4vw, 3rem);
@@ -203,27 +163,9 @@
       box-decoration-break: clone;
     }
 
-    .hero-subtitle {
-      max-width: 520px;
-      font-size: 0.95rem;
-      margin-bottom: 22px;
-    }
+    .hero-subtitle { max-width: 520px; font-size: 0.95rem; margin-bottom: 22px; }
 
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .hero-photo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;   /* fills the box, nice crop */
-    border-radius: inherit;
-    display: block;
-    }
-
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
     .btn {
       display: inline-flex;
@@ -246,24 +188,16 @@
     .btn-primary {
       background: var(--black);
       color: var(--gold);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
     }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
-    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(0,0,0,0.4); }
 
     .btn-ghost {
       background: transparent;
       color: var(--black);
       border-color: var(--black);
     }
-
-    .btn-ghost:hover {
-      background: var(--black);
-      color: var(--gold);
-    }
+    .btn-ghost:hover { background: var(--black); color: var(--gold); }
 
     .hero-meta {
       display: flex;
@@ -273,23 +207,10 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
+    .hero-metric { border-left: 2px solid var(--black); padding-left: 10px; }
+    .hero-metric span { display: block; font-weight: 800; font-size: 1.1rem; }
 
-    .hero-metric {
-      border-left: 2px solid var(--black);
-      padding-left: 10px;
-    }
-
-    .hero-metric span {
-      display: block;
-      font-weight: 800;
-      font-size: 1.1rem;
-    }
-
-    /* hero right "image" placeholder area */
-    .hero-visual {
-      position: relative;
-      height: 450px;
-    }
+    .hero-visual { position: relative; height: 450px; }
 
     .hero-poly {
       position: absolute;
@@ -297,7 +218,7 @@
       background: linear-gradient(135deg, var(--gold), var(--gold-deep));
       clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
       border-radius: 20px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
     }
 
     .hero-photo-placeholder {
@@ -308,14 +229,19 @@
       height: 75%;
       background: var(--offwhite);
       border-radius: 18px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
       border: 2px solid var(--black);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
+    }
+
+    .hero-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
     }
 
     .hero-mini-card {
@@ -328,7 +254,7 @@
       border-radius: 14px;
       font-size: 0.8rem;
       max-width: 180px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
     .hero-mini-dots {
@@ -340,16 +266,9 @@
     }
 
     /* ---------- SECTION BASE ---------- */
+    section { padding: 60px 0; position: relative; }
 
-    section {
-      padding: 60px 0;
-      position: relative;
-    }
-
-    .section-header {
-      margin-bottom: 28px;
-    }
-
+    .section-header { margin-bottom: 28px; }
     .section-kicker {
       font-size: 0.8rem;
       text-transform: uppercase;
@@ -357,7 +276,6 @@
       color: #777;
       margin-bottom: 4px;
     }
-
     .section-title {
       font-size: 1.7rem;
       font-weight: 800;
@@ -365,7 +283,6 @@
       align-items: center;
       gap: 8px;
     }
-
     .section-title::after {
       content: "";
       flex: 1;
@@ -376,19 +293,13 @@
     }
 
     /* ---------- ABOUT / INFO ---------- */
-
     .about-layout {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: 34px;
       align-items: start;
     }
-
-    @media (max-width: 900px) {
-      .about-layout {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width: 900px) { .about-layout { grid-template-columns: 1fr; } }
 
     .about-pill {
       background: var(--black);
@@ -403,24 +314,17 @@
       letter-spacing: 0.12em;
       margin-bottom: 8px;
     }
-
-    .about-pill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
+    .about-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
 
     .about-highlight-box {
       background: var(--white);
       border-radius: 18px;
       padding: 16px 18px;
       border: 1px solid #ddd;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
       position: relative;
       overflow: hidden;
     }
-
     .about-highlight-box::before {
       content: "";
       position: absolute;
@@ -432,11 +336,7 @@
       border: 2px solid var(--gold);
       opacity: 0.5;
     }
-
-    .about-highlight-box strong {
-      display: block;
-      margin-bottom: 4px;
-    }
+    .about-highlight-box strong { display: block; margin-bottom: 4px; }
 
     .about-facts {
       display: grid;
@@ -445,13 +345,7 @@
       margin-top: 16px;
       font-size: 0.88rem;
     }
-
-    .about-fact {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
+    .about-fact { display: flex; align-items: flex-start; gap: 8px; }
     .about-fact-marker {
       width: 10px;
       height: 10px;
@@ -464,10 +358,9 @@
     .about-right {
       position: relative;
       padding-left: 16px;
-      border-left: 2px dotted rgba(0, 0, 0, 0.35);
+      border-left: 2px dotted rgba(0,0,0,0.35);
       font-size: 0.9rem;
     }
-
     .about-right-label {
       font-size: 0.78rem;
       text-transform: uppercase;
@@ -477,15 +370,8 @@
     }
 
     /* ---------- REQUEST SECTION ---------- */
-
     .section-alt {
-      background: linear-gradient(
-        135deg,
-        #ffffff 0,
-        #fff5d4 35%,
-        #ffe19c 80%,
-        #ffffff 100%
-      );
+      background: linear-gradient(135deg, #ffffff 0, #fff5d4 35%, #ffe19c 80%, #ffffff 100%);
       clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
     }
 
@@ -495,20 +381,9 @@
       gap: 32px;
       align-items: center;
     }
+    @media (max-width: 900px) { .request-layout { grid-template-columns: 1fr; } }
 
-    @media (max-width: 900px) {
-      .request-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .request-steps {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 0.9rem;
-    }
-
+    .request-steps { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
     .request-step {
       display: grid;
       grid-template-columns: auto minmax(0, 1fr);
@@ -516,7 +391,6 @@
       align-items: baseline;
       margin-bottom: 10px;
     }
-
     .step-number {
       width: 26px;
       height: 26px;
@@ -531,17 +405,16 @@
     }
 
     .request-card {
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255,255,255,0.96);
       border-radius: 18px;
       padding: 18px 18px 16px;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
       max-width: 360px;
       margin-left: auto;
       position: relative;
       overflow: hidden;
     }
-
     .request-card-title {
       font-size: 0.88rem;
       text-transform: uppercase;
@@ -549,23 +422,11 @@
       margin-bottom: 4px;
       color: #555;
     }
+    .request-card-main { font-weight: 700; margin-bottom: 10px; }
+    .request-card-note { font-size: 0.8rem; color: #666; margin-bottom: 12px; }
 
-    .request-card-main {
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .request-card-note {
-      font-size: 0.8rem;
-      color: #666;
-      margin-bottom: 12px;
-    }
-
-    /* ---------- PAST PROJECTS (SCROLL REVEAL) ---------- */
-
-    .projects {
-      background: var(--offwhite);
-    }
+    /* ---------- PAST PROJECTS (DYNAMIC) ---------- */
+    .projects { background: var(--offwhite); }
 
     .projects-grid {
       display: grid;
@@ -575,7 +436,6 @@
       position: relative;
     }
 
-    /* connecting accent line */
     .projects-grid::before {
       content: "";
       position: absolute;
@@ -585,33 +445,28 @@
       height: 90%;
       background: repeating-linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.45),
-        rgba(0, 0, 0, 0.45) 6px,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.45) 6px,
         transparent 6px,
         transparent 12px
       );
       opacity: 0.6;
     }
 
-    @media (max-width: 600px) {
-      .projects-grid::before {
-        display: none;
-      }
-    }
+    @media (max-width: 600px) { .projects-grid::before { display: none; } }
 
     .project-card {
       position: relative;
-      padding: 18px 18px 16px;
+      padding: 40px 30px 40px 40px;
       background: var(--white);
       border-radius: 18px;
       border: 1px solid #ddd;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
       overflow: hidden;
       transform-origin: center;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
       clip-path: polygon(0 8%, 92% 0, 100% 80%, 8% 100%);
     }
-
     .project-card::before {
       content: "";
       position: absolute;
@@ -623,10 +478,9 @@
       border: 2px solid var(--gold);
       opacity: 0.35;
     }
-
     .project-card:hover {
       transform: translateY(-3px) rotate(-0.4deg);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.16);
     }
 
     .project-tag {
@@ -636,132 +490,227 @@
       color: #888;
       margin-bottom: 4px;
     }
+    .project-title { font-weight: 700; margin-bottom: 6px; }
+    .project-meta { font-size: 0.8rem; color: #666; margin-bottom: 6px; }
+    .project-line { width: 60px; height: 2px; background: var(--gold); margin-bottom: 8px; }
+    .project-outcome { font-size: 0.84rem; }
 
-    .project-title {
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .project-meta {
-      font-size: 0.8rem;
-      color: #666;
-      margin-bottom: 6px;
-    }
-
-    .project-line {
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
-      margin-bottom: 8px;
-    }
-
-    .project-outcome {
-      font-size: 0.84rem;
-    }
-
-    /* SCROLL REVEAL BASE */
-
+    /* Reveal */
     .reveal-on-scroll {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
+    .reveal-visible { opacity: 1; transform: translateY(0); }
 
-    .reveal-visible {
-      opacity: 1;
-      transform: translateY(0);
+    .inline-note {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 6px;
+      max-width: 780px;
     }
 
-    /* ---------- PHOTO GALLERY ---------- */
+    /* ---------- PHOTO GALLERY (3 auto-scrolling rows) ---------- */
+    .gallery-rows { margin-top: 18px; display: grid; gap: 12px; }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      grid-auto-rows: 130px; /* base height for rows */
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    @media (max-width: 900px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 140px;
-      }
-    }
-
-    .gallery-item {
+    .gallery-row {
       position: relative;
-      border-radius: 14px;
       overflow: hidden;
-      background: #000;
-      border: 1px solid #ccc;
+      border-radius: 16px;
+      border: 1px solid #ddd;
+      background: #fff;
+      padding: 10px 0;
+    }
+
+    .gallery-track {
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      gap: 12px;
+      width: max-content;
+      will-change: transform;
     }
 
-    /* Different shapes & sizes like the old gallery */
-    .gallery-item:nth-child(1) {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .gallery-item:nth-child(3) {
-      grid-row: span 2;
-    }
-
-    .gallery-item:nth-child(5) {
-      grid-column: span 2;
-    }
-
-    /* Preserve the whole image (no crazy cropping) */
-    .gallery-item img {
-      max-width: 100%;
-      max-height: 100%;
+    .gallery-thumb {
+      height: 160px;
       width: auto;
-      height: auto;
-      display: block;
+      border-radius: 14px;
+      border: 1px solid #ccc;
+      background: #000;
+      object-fit: cover;
+      cursor: pointer;
+      flex: 0 0 auto;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
+    .gallery-thumb:hover { transform: translateY(-1px) scale(1.02); box-shadow: 0 10px 22px rgba(0,0,0,0.18); }
+
+    @media (max-width: 900px) { .gallery-thumb { height: 140px; } }
+    @media (max-width: 520px) { .gallery-thumb { height: 120px; } }
+
+    .gallery-paused .gallery-track { animation-play-state: paused !important; }
 
     /* ---------- LIGHTBOX ---------- */
-
     .lightbox-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;              /* hidden by default */
+      background: rgba(0,0,0,0.9);
+      display: none;
       align-items: center;
       justify-content: center;
       z-index: 999;
+      padding: 24px;
     }
+    .lightbox-overlay.open { display: flex; }
 
     .lightbox-overlay img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 12px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      max-width: min(1100px, 92vw);
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 0 34px rgba(0,0,0,0.6);
     }
-
-    .lightbox-overlay.open {
-      display: flex;
-    }
-
-    /* optional: close hint */
     .lightbox-overlay::after {
-      content: "Click anywhere to close";
+      content: "Click outside or press Esc to close";
       position: absolute;
-      bottom: 20px;
+      bottom: 18px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 0.8rem;
       color: #ddd;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    /* ---------- TEAM SECTION ---------- */
+    .team { background: var(--offwhite); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 18px;
+      border: 1px solid #ddd;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      padding: 14px 14px;
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .team-card::before {
+      content: "";
+      position: absolute;
+      right: -26px;
+      top: -26px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      opacity: 0.35;
+    }
+
+    .team-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 16px;
+      border: 1px solid var(--black);
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .team-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px 14px;
+      align-items: start;
+    }
+
+    .team-name {
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .team-subline {
+      font-size: 0.86rem;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .team-years {
+      align-self: start;
+      background: rgba(255, 200, 87, 0.28);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .team-about {
+      grid-column: 1 / -1;
+      font-size: 0.9rem;
+      color: #333;
+      margin-top: 6px;
+    }
+
+    .team-mini {
+      font-size: 0.82rem;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    .team-section-split {
+      margin-top: 30px;
+      padding-top: 10px;
+      border-top: 2px dashed rgba(0,0,0,0.2);
+    }
+
+    .team-subheader {
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: #555;
+      margin: 0 0 10px;
+    }
+
+    @media (max-width: 650px) {
+      .team-card {
+        grid-template-columns: 1fr;
+      }
+      .team-photo {
+        width: 100%;
+        height: 220px;
+      }
+      .team-main {
+        grid-template-columns: 1fr;
+      }
+      .team-years {
+        justify-self: start;
+      }
     }
 
     /* ---------- DONATE ---------- */
-
     .donate {
       background: var(--black);
       color: var(--white);
@@ -774,12 +723,7 @@
       gap: 32px;
       align-items: center;
     }
-
-    @media (max-width: 900px) {
-      .donate-inner {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width: 900px) { .donate-inner { grid-template-columns: 1fr; } }
 
     .donate-pill {
       font-size: 0.75rem;
@@ -788,67 +732,35 @@
       margin-bottom: 6px;
       color: #bbbbbb;
     }
+    .donate-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+    .donate-highlight { color: var(--gold); }
 
-    .donate-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .donate-highlight {
-      color: var(--gold);
-    }
-
-    .donate-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 0.88rem;
-    }
-
-    .donate-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .donate-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      margin-top: 6px;
-    }
+    .donate-list { list-style: none; padding: 0; margin: 0; font-size: 0.88rem; }
+    .donate-list li { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+    .donate-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 6px; }
 
     .donate-box {
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0,0,0,0.8);
       border-radius: 16px;
       padding: 16px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.12);
       font-size: 0.85rem;
     }
 
     /* ---------- CONTACT ---------- */
-
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 2.4fr) minmax(0, 2.4fr);
       gap: 30px;
     }
-
-    @media (max-width: 900px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
 
     .contact-block {
       background: var(--white);
       border-radius: 16px;
       padding: 16px 18px;
       border: 1px solid #ddd;
-      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 7px 18px rgba(0,0,0,0.08);
       font-size: 0.9rem;
     }
 
@@ -860,26 +772,10 @@
       margin-bottom: 4px;
     }
 
-    .contact-value {
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
+    .contact-value { font-weight: 700; margin-bottom: 4px; }
+    .contact-line { width: 60px; height: 2px; background: var(--black); margin: 8px 0 10px; }
 
-    .contact-line {
-      width: 60px;
-      height: 2px;
-      background: var(--black);
-      margin: 8px 0 10px;
-    }
-
-    /* ---------- FOOTER ---------- */
-
-    footer {
-      padding: 18px 16px 24px;
-      text-align: center;
-      font-size: 0.78rem;
-      color: #777;
-    }
+    footer { padding: 18px 16px 24px; text-align: center; font-size: 0.78rem; color: #777; }
   </style>
 </head>
 
@@ -888,7 +784,7 @@
   <nav class="nav">
     <div class="nav-inner">
       <div class="nav-logo">
-          <img src="images/Logo.png" alt="Prosthetics Club logo" class="nav-logo-img">
+        <img src="images/Logo.png" alt="Prosthetics Club logo" class="nav-logo-img">
         Purdue Prosthetics Club
       </div>
       <div class="nav-links">
@@ -898,6 +794,7 @@
         <a href="#gallery">Photos</a>
         <a href="#donate">Donate</a>
         <a href="#contact">Contact</a>
+        <a href="#team">Meet the Team</a>
       </div>
     </div>
   </nav>
@@ -909,26 +806,21 @@
         <div class="hero-tag">
           <div class="hero-tag-line"></div>
           Free Custom Prosthetics • Humans and Animals
-        <div class="hero-tag-line"></div>
+          <div class="hero-tag-line"></div>
         </div>
         <h1 class="hero-title">
-          We lend a </br>helping
+          We lend a <br/>helping
           <span class="hero-highlight">hand</span>
         </h1>
         <p class="hero-subtitle">
           We are a student-led prosthetics club at Purdue University designing
           and fabricating custom devices for people and pets.
           Our mission: accessible, functional, and beautiful prosthetics
-          and assitive devices for every client on our list.
+          and assistive devices for every client on our list.
         </p>
 
         <div class="hero-cta">
-          <a
-            class="btn btn-primary"
-            href="#request"
-          >
-            Request a Prosthetic
-          </a>
+          <a class="btn btn-primary" href="#request">Request a Prosthetic</a>
           <a class="btn btn-ghost" href="#donate">Support Our Work</a>
         </div>
 
@@ -957,7 +849,7 @@
     </div>
   </section>
 
-  <!-- ABOUT / MORE INFO -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="wrapper">
       <div class="section-header">
@@ -1008,11 +900,9 @@
             combining student ingenuity with low-cost fabrication, we can serve
             clients who might otherwise go without.
           </p>
-          <p>
-            We especially focus on, but are not limited to:
-          </p>
+          <p>We especially focus on, but are not limited to:</p>
           <ul>
-            <li>Clients seeking myoelectric prosthetics hands</li>
+            <li>Clients seeking myoelectric prosthetic hands</li>
             <li>Pets whose mobility impacts their quality of life</li>
             <li>Individuals seeking lightweight, activity-specific devices</li>
           </ul>
@@ -1025,7 +915,7 @@
     </div>
   </section>
 
-  <!-- REQUEST A PROSTHETIC -->
+  <!-- REQUEST -->
   <section id="request" class="section-alt">
     <div class="wrapper">
       <div class="section-header">
@@ -1039,31 +929,22 @@
             If you or your pet could benefit from a custom prosthetic,
             please submit a request. Our team will follow up via email to gather
             measurements, photos, and any medical or veterinary guidance.
-            Please note that, due to our current client capacity, it may take 
+            Please note that, due to our current client capacity, it may take
             anywhere from a few weeks to a few months to receive a reply.
           </p>
 
           <ul class="request-steps">
             <li class="request-step">
               <div class="step-number">1</div>
-              <div>
-                Fill out our request form with basic contact information and a
-                short description of the need.
-              </div>
+              <div>Fill out our request form with basic contact information and a short description of the need.</div>
             </li>
             <li class="request-step">
               <div class="step-number">2</div>
-              <div>
-                We’ll reach out as soon as we can to ask follow-up questions
-                and request photos or measurements.
-              </div>
+              <div>We’ll reach out as soon as we can to ask follow-up questions and request photos or measurements.</div>
             </li>
             <li class="request-step">
               <div class="step-number">3</div>
-              <div>
-                Our design team will create a custom solution, share a
-                prototype, and refine it based on your feedback.
-              </div>
+              <div>Our design team will create a custom solution, share a prototype, and refine it based on your feedback.</div>
             </li>
           </ul>
         </div>
@@ -1073,90 +954,34 @@
             <div class="request-card-title">Form Intake</div>
             <div class="request-card-main">Start a new prosthetic request</div>
             <div class="request-card-note">
-              You’ll be redirected to a Google Form where you can tell us
-              about your needs.
+              You’ll be redirected to a Google Form where you can tell us about your needs.
             </div>
 
-            <!-- Google Form link -->
-            <a
-              class="btn btn-primary"
-              href="https://forms.gle/eZdeg4AdtwwNc8xt5"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a class="btn btn-primary" href="https://forms.gle/eZdeg4AdtwwNc8xt5" target="_blank" rel="noopener noreferrer">
               Open Request Form
             </a>
-
-            <!-- If you prefer an embedded form, you can replace the button above
-                 with an <iframe> using your Google Form's "Embed" URL. -->
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PAST PROJECTS (SCROLL REVEAL) -->
+  <!-- PROJECTS (NOW DYNAMIC) -->
   <section id="projects" class="projects">
     <div class="wrapper">
       <div class="section-header">
         <div class="section-kicker">Past Projects</div>
         <h2 class="section-title">Recent builds & stories</h2>
+        <div class="inline-note">See photos in the gallary</div>
       </div>
 
-      <div class="projects-grid">
-        <!-- Each project-card has reveal-on-scroll class -->
-        <article class="project-card reveal-on-scroll">
-          <div class="project-tag">Canine Assistive Devices</div>
-          <div class="project-title">Accessible Food Bowl</div>
-          <div class="project-meta">Accessible Feeding • Specialty Design</div>
-          <div class="project-line"></div>
-          <p class="project-outcome">
-          Designed a custom food bowl for a dog missing its lower jaw. 
-          The bowl featured a contoured rim that prevented food from 
-          spilling and allowed the dog to eat independently 
-          without caregiver assistance.
-          </p>
-        </article>
-
-        <article class="project-card reveal-on-scroll">
-          <div class="project-tag">Feline Mobility</div>
-          <div class="project-title">Rear-Leg Cat Wheelchair</div>
-          <div class="project-meta">Hind legs • Movement</div>
-          <div class="project-line"></div>
-          <p class="project-outcome">
-          Designed and built a lightweight rear-leg wheelchair for a paralyzed cat, 
-          providing mobility assistance while reducing drag and improving posture.
-          </p>
-        </article>
-
-        <article class="project-card reveal-on-scroll">
-          <div class="project-tag">Finger Prosthetics</div>
-          <div class="project-title">3D-Printed Partial Fingers</div>
-          <div class="project-meta">Articulated • Everyday tasks</div>
-          <div class="project-line"></div>
-          <p class="project-outcome">
-            Passive mechanical fingers designed for a client who was born without 
-            fingers after the first knuckle to improve grip stability on
-            cups, grocery bags, and tools.
-          </p>
-        </article>
-
-        <article class="project-card reveal-on-scroll">
-          <div class="project-tag">Experimental Design</div>
-          <div class="project-title">Myoelectric Hand</div>
-          <div class="project-meta">Prototype • Feedback-driven</div>
-          <div class="project-line"></div>
-          <p class="project-outcome">
-          Collaborated with a client to create a customized prosthetic hand 
-          fitted to his arm and controlled using forearm muscle activity. 
-          The hand could open and close in response to EMG signals.
-          </p>
-        </article>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- JS will inject project cards here -->
       </div>
     </div>
   </section>
 
-  <!-- PHOTO GALLERY / PLACEHOLDERS -->
+  <!-- GALLERY -->
   <section id="gallery">
     <div class="wrapper">
       <div class="section-header">
@@ -1168,15 +993,10 @@
         Images of some of our past work! For more check out our Instagram @purdueprosthetics
       </p>
 
-      <div class="gallery-grid">
-        <div class="gallery-item"><img src="images/Photo1.png" alt=""></div>
-        <div class="gallery-item"><img src="images/Photo3.png" alt=""></div>
-        <div class="gallery-item"><img src="images/Photo4.png" alt=""></div>
-        <div class="gallery-item"><img src="images/Photo2.png" alt=""></div>
-        <div class="gallery-item"><img src="images/Photo5.png" alt=""></div>
-        <div class="gallery-item"><img src="images/Photo6.png" alt=""></div>
-        <div class="gallery-item"><img src="images/Photo7.png" alt=""></div>
-        <div class="gallery-item"><img src="images/Photo8.png" alt=""></div>
+      <div class="gallery-rows" id="galleryRows">
+        <div class="gallery-row" data-row="1"></div>
+        <div class="gallery-row" data-row="2"></div>
+        <div class="gallery-row" data-row="3"></div>
       </div>
     </div>
   </section>
@@ -1195,29 +1015,17 @@
           complex, multi-iteration builds.
         </p>
         <ul class="donate-list">
-          <li>
-            <div class="donate-dot"></div>
-            <div>Filament, resins, padding, and hardware for custom builds</div>
-          </li>
-          <li>
-            <div class="donate-dot"></div>
-            <div>Tools, molds, and replacement parts for long-term use</div>
-          </li>
-          <li>
-            <div class="donate-dot"></div>
-            <div>Shipping prosthetics to clients who can’t visit in person</div>
-          </li>
+          <li><div class="donate-dot"></div><div>Filament, resins, padding, and hardware for custom builds</div></li>
+          <li><div class="donate-dot"></div><div>Tools, molds, and replacement parts for long-term use</div></li>
+          <li><div class="donate-dot"></div><div>Shipping prosthetics to clients who can’t visit in person</div></li>
         </ul>
       </div>
 
       <div>
         <div class="donate-box">
           <strong>Support options:</strong>
-          <p>
-            We accept donations via our university’s giving portal
-          </p>
+          <p>We accept donations via our university’s giving portal</p>
 
-          <!-- TODO: Replace this link with your actual donation page --> 
           <a
             href="https://giving.purdue.edu/west-lafayette/?q=3D%20Printed%20Prosthetics%20Club"
             class="btn btn-primary"
@@ -1227,6 +1035,7 @@
           >
             Open Donation Page
           </a>
+
           <p style="margin-top: 12px; font-size: 0.85rem; color: #cccccc;">
             For further instructions and information on Purdue donations,
             please see the
@@ -1277,12 +1086,8 @@
           <div class="contact-label">Social & location</div>
           <div class="contact-value">Connect with us</div>
           <div class="contact-line"></div>
-          <p style="margin-bottom: 6px;">
-            Instagram: @purdueprosthetics<br />
-          </p>
-          <p style="margin-bottom: 6px;">
-            Campus: Purdue University, West Lafayette<br />
-          </p>
+          <p style="margin-bottom: 6px;">Instagram: @purdueprosthetics<br /></p>
+          <p style="margin-bottom: 6px;">Campus: Purdue University, West Lafayette<br /></p>
           <p style="font-size: 0.84rem;">
             We frequently post photos of in-progress builds, team work nights,
             and team hangouts
@@ -1292,37 +1097,377 @@
     </div>
   </section>
 
-  <footer>
-    2026 Purdue Prosthetics Club
-  </footer>
+  <!-- TEAM (NEW, BOTTOM) -->
+  <section id="team" class="team">
+    <div class="wrapper">
+      <div class="section-header">
+        <div class="section-kicker">Meet the Team</div>
+        <h2 class="section-title">Students behind the builds</h2>
+        <div class="inline-note">
+          Take a look at the students who dedicate their time to these amazing projects!
+        </div>
+      </div>
 
-  <!-- SCROLL REVEAL JS -->
+      <div id="teamActive" class="team-grid"></div>
+
+      <div class="team-section-split"></div>
+      <h3 class="team-subheader">ALUMNI</h3>
+      <div id="teamAlumni" class="team-grid"></div>
+    </div>
+  </section>
+
+  <footer>2026 Purdue Prosthetics Club</footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <img src="" alt="Expanded gallery image" id="lightbox-img">
+  </div>
+
   <script>
-    // Simple IntersectionObserver for project cards
-    const revealItems = document.querySelectorAll(".reveal-on-scroll");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
+    // ---------------------------
+    // Scroll reveal for anything with .reveal-on-scroll
+    // ---------------------------
+    function setupScrollReveal() {
+      const revealItems = document.querySelectorAll(".reveal-on-scroll");
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("reveal-visible");
-            observer.unobserve(entry.target); // only animate once
+            observer.unobserve(entry.target);
           }
         });
-      },
-      {
-        threshold: 0.2,
-      }
-    );
+      }, { threshold: 0.2 });
 
-    revealItems.forEach((el) => observer.observe(el));
-  
-  
+      revealItems.forEach((el) => observer.observe(el));
+    }
+
+    // ---------------------------
+    // Projects: load from project-stories.txt
+    // Format:
+    // Student: ...
+    // Title: ...
+    // Meta: ...
+    // Story: ...
+    //
+    // Blocks separated by blank lines
+    // ---------------------------
+    async function loadProjectStories() {
+      const grid = document.getElementById("projectsGrid");
+      grid.innerHTML = "";
+
+      let text = "";
+      try {
+        const res = await fetch("project-stories.txt", { cache: "no-store" });
+        if (!res.ok) throw new Error("Could not load project-stories.txt");
+        text = await res.text();
+      } catch (err) {
+        console.error(err);
+        grid.insertAdjacentHTML("beforeend", `
+          <div class="about-highlight-box">
+            <strong>Project stories unavailable.</strong>
+            <div style="margin-top:6px; color:#666; font-size:0.9rem;">
+              Could not load <code>project-stories.txt</code>. Make sure it is next to this HTML file and you're running a local server.
+            </div>
+          </div>
+        `);
+        return;
+      }
+
+      const blocks = text
+        .split(/\n\s*\n/g)
+        .map(b => b.trim())
+        .filter(Boolean);
+
+      blocks.forEach((block) => {
+        const data = parseKeyValueBlock(block, {
+          Student: "",
+          Title: "",
+          Meta: "",
+          Story: ""
+        });
+
+        const student = (data.Student || "Student").trim();
+        const title = (data.Title || "Project Title").trim();
+        const meta = (data.Meta || "").trim();
+        const story = (data.Story || "").trim();
+
+        const card = document.createElement("article");
+        card.className = "project-card reveal-on-scroll";
+
+        card.innerHTML = `
+          <div class="project-tag">${escapeHtml(student)}</div>
+          <div class="project-title">${escapeHtml(title)}</div>
+          ${meta ? `<div class="project-meta">${escapeHtml(meta)}</div>` : `<div class="project-meta">&nbsp;</div>`}
+          <div class="project-line"></div>
+          <p class="project-outcome">${escapeHtml(story)}</p>
+        `;
+        grid.appendChild(card);
+      });
+
+      // Re-run reveal after injecting
+      setupScrollReveal();
+    }
+
+    // ---------------------------
+    // Team: load list of bio files from teamBios/index.txt (order-controlled)
+    // Each bio file format:
+    // Name: ...
+    // Major: ...
+    // Year: ...
+    // Years in the club: ...
+    // Position: ...
+    // A little about me: ...
+    // Photo name: ...
+    // ---------------------------
+    async function loadTeamBios() {
+      const activeEl = document.getElementById("teamActive");
+      const alumniEl = document.getElementById("teamAlumni");
+      activeEl.innerHTML = "";
+      alumniEl.innerHTML = "";
+
+      let indexText = "";
+      try {
+        const res = await fetch("teamBios/index.txt", { cache: "no-store" });
+        if (!res.ok) throw new Error("Could not load teamBios/index.txt");
+        indexText = await res.text();
+      } catch (err) {
+        console.error(err);
+        activeEl.insertAdjacentHTML("beforeend", `
+          <div class="about-highlight-box">
+            <strong>Team section unavailable.</strong>
+            <div style="margin-top:6px; color:#666; font-size:0.9rem;">
+              Could not load <code>teamBios/index.txt</code>. Create it and list bio filenames (one per line).
+            </div>
+          </div>
+        `);
+        return;
+      }
+
+      const files = indexText
+        .split("\n")
+        .map(s => s.trim())
+        .filter(s => s && !s.startsWith("#")); // allow comments with #
+
+      for (const filename of files) {
+        let bioText = "";
+        try {
+          const res = await fetch(`teamBios/${filename}`, { cache: "no-store" });
+          if (!res.ok) throw new Error(`Could not load teamBios/${filename}`);
+          bioText = await res.text();
+        } catch (err) {
+          console.error(err);
+          continue; // skip broken entry
+        }
+
+        const bio = parseKeyValueBlock(bioText, {
+          "Name": "",
+          "Major": "",
+          "Year": "",
+          "Years in the club": "",
+          "Position": "",
+          "A little about me": "",
+          "Photo name": ""
+        });
+
+        const name = (bio["Name"] || "Name").trim();
+        const major = (bio["Major"] || "").trim();
+        const year = (bio["Year"] || "").trim();
+        const yearsInClub = (bio["Years in the club"] || "").trim();
+        const position = (bio["Position"] || "").trim();
+        const about = (bio["A little about me"] || "").trim();
+        const photo = (bio["Photo name"] || "").trim();
+
+        const isAlumni = /^(alum|alumni)$/i.test(year);
+
+        const card = document.createElement("div");
+        card.className = "team-card reveal-on-scroll";
+
+        const photoSrc = photo ? `teamBios/${photo}` : `images/Photo2.png`; // fallback image
+        const subLeft = [year, position].filter(Boolean).join(" • ");
+
+        card.innerHTML = `
+          <div class="team-photo">
+            <img src="${escapeAttr(photoSrc)}" alt="${escapeAttr(name)}">
+          </div>
+
+          <div class="team-main">
+            <div>
+              <p class="team-name">${escapeHtml(name)}</p>
+              <div class="team-subline">${escapeHtml(subLeft || " ")}</div>
+              ${major ? `<div class="team-mini">${escapeHtml(major)}</div>` : ``}
+            </div>
+
+            <div class="team-years">${escapeHtml(yearsInClub ? `Years active: ${yearsInClub}` : `Years active: —`)}</div>
+
+            <div class="team-about">${escapeHtml(about || "")}</div>
+          </div>
+        `;
+
+        (isAlumni ? alumniEl : activeEl).appendChild(card);
+      }
+
+      setupScrollReveal();
+    }
+
+    // ---------------------------
+    // Gallery: (same logic you already had)
+    // ---------------------------
+    const galleryRows = document.getElementById("galleryRows");
+    const rowEls = galleryRows.querySelectorAll(".gallery-row");
+
+    async function loadPhotosFromCount() {
+      const res = await fetch("photo-count.txt", { cache: "no-store" });
+      if (!res.ok) throw new Error("Could not load photo-count.txt");
+      const text = await res.text();
+      const count = parseInt(text.trim(), 10);
+      if (isNaN(count) || count <= 0) throw new Error("photo-count.txt must contain a positive number");
+      return Array.from({ length: count }, (_, i) => `images/Photo${i + 1}.png`);
+    }
+
+    function buildRow(rowEl, images, secondsPerLoop = 30, direction = 1) {
+      const track = document.createElement("div");
+      track.className = "gallery-track";
+
+      images.forEach((src) => {
+        const img = document.createElement("img");
+        img.className = "gallery-thumb";
+        img.src = src;
+        img.alt = "";
+        img.loading = "lazy";
+        img.addEventListener("click", () => openLightbox(src));
+        track.appendChild(img);
+      });
+
+      images.forEach((src) => {
+        const img = document.createElement("img");
+        img.className = "gallery-thumb";
+        img.src = src;
+        img.alt = "";
+        img.loading = "lazy";
+        img.addEventListener("click", () => openLightbox(src));
+        track.appendChild(img);
+      });
+
+      rowEl.innerHTML = "";
+      rowEl.appendChild(track);
+
+      const animName = `scrollRow_${rowEl.dataset.row}`;
+      const style = document.createElement("style");
+
+      style.textContent = `
+        @keyframes ${animName} {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        .gallery-row[data-row="${rowEl.dataset.row}"] .gallery-track {
+          animation: ${animName} ${secondsPerLoop}s linear infinite;
+          animation-direction: ${direction === 1 ? "normal" : "reverse"};
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    function pauseGallery(paused) {
+      rowEls.forEach((row) => row.classList.toggle("gallery-paused", paused));
+    }
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add("open");
+      pauseGallery(true);
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightboxImg.src = "";
+      pauseGallery(false);
+    }
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("open")) closeLightbox();
+    });
+
+    // ---------------------------
+    // Small helpers
+    // ---------------------------
+    function parseKeyValueBlock(text, defaults = {}) {
+      // Supports values that may contain ":" as long as the key is at line start.
+      // Also supports multi-line values by continuing until the next "Key:" line.
+      const keys = Object.keys(defaults);
+      const keyRegex = new RegExp(`^(${keys.map(escapeRegex).join("|")}):\\s*(.*)$`, "i");
+
+      const lines = text.replace(/\r/g, "").split("\n");
+      const out = { ...defaults };
+
+      let currentKey = null;
+
+      for (const rawLine of lines) {
+        const line = rawLine.trimEnd();
+
+        const m = line.match(keyRegex);
+        if (m) {
+          currentKey = normalizeKey(m[1], keys);
+          out[currentKey] = (m[2] || "").trim();
+        } else if (currentKey && line.trim() !== "") {
+          out[currentKey] += (out[currentKey] ? "\n" : "") + line.trim();
+        }
+      }
+      return out;
+    }
+
+    function normalizeKey(foundKey, allowedKeys) {
+      const fk = foundKey.toLowerCase();
+      const match = allowedKeys.find(k => k.toLowerCase() === fk);
+      return match || foundKey;
+    }
+
+    function escapeRegex(s) {
+      return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttr(str) {
+      // Keep it simple: reuse escapeHtml for attributes
+      return escapeHtml(str);
+    }
+
+    // ---------------------------
+    // Init
+    // ---------------------------
+    (async () => {
+      setupScrollReveal();
+      await loadProjectStories();
+      await loadTeamBios();
+
+      // init gallery
+      try {
+        const photos = await loadPhotosFromCount();
+        const rowBuckets = [[], [], []];
+        photos.forEach((src, idx) => rowBuckets[idx % 3].push(src));
+        buildRow(rowEls[0], rowBuckets[0], 34, 1);
+        buildRow(rowEls[1], rowBuckets[1], 28, -1);
+        buildRow(rowEls[2], rowBuckets[2], 32, 1);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
   </script>
-<div class="lightbox-overlay" id="lightbox">
-<img src="" alt="Expanded gallery image" id="lightbox-img">
-</div>
 
 </body>
 </html>
-
