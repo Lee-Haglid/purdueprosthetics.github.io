@@ -1,3 +1,0 @@
-haglid.txt
-lutz.txt
-hoppe.txt
